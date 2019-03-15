@@ -1,10 +1,44 @@
 ﻿<Window x:Class="PrismFirstApp.Views.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:prism="http://prismlibrary.com/"
+        xmlns:prism="http://prismlibrary.com/"  
         prism:ViewModelLocator.AutoWireViewModel="True"
-        Title="{Binding Title}" Height="350" Width="525">
-    <Grid>
-        <ContentControl prism:RegionManager.RegionName="ContentRegion" />
+        Title="{Binding Title}" Height="531.694" Width="737.295"
+        >
+    
+    <Grid Margin="59,94,78,61">
+        <Button x:Name="DeleteNumberButton" 
+                Command="{Binding RemoveCommand}"
+                CommandParameter="{Binding ElementName=AllNumbersListBox, Path=SelectedIndex}"
+                Content="Delete Number" 
+                HorizontalAlignment="Left" 
+                Margin="309,84,0,0" 
+                VerticalAlignment="Top" 
+                Width="106" 
+                Height="104"/>
+        <ListBox x:Name="AllNumbersListBox" 
+                 ItemsSource="{Binding MyValues}"
+                 HorizontalAlignment="Left"
+                 Height="207"
+                 Margin="61,84,0,0"
+                 VerticalAlignment="Top" 
+                 Width="188"/>
+        <Button x:Name="AddNumberButton" 
+            Content="Add Number" 
+            HorizontalAlignment="Left"
+            Margin="309,30,0,0" 
+            VerticalAlignment="Top"
+            Width="106" Height="30"
+            Command="{Binding AddCommand}"
+            CommandParameter="{Binding ElementName=CurrentNumberTextBox, Path=Text}"
+                />
+        <TextBox x:Name="CurrentNumberTextBox"
+                 Text="{Binding Sum, Mode=OneWay}"
+                 HorizontalAlignment="Left" 
+                 Height="30" 
+                 Margin="61,30,0,0" 
+                 TextWrapping="Wrap"
+                 VerticalAlignment="Top" 
+                 Width="188"/>
     </Grid>
 </Window>
